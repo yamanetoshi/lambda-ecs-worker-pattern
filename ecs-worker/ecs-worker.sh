@@ -67,24 +67,7 @@ while [ /bin/true ]; do
             echo "Copying ${key} from S3 bucket ${bucket}..."
             aws s3 cp s3://${bucket}/${key} . --region ${region}
 
-            echo "Unzipping ${key}..."
-            unzip ${key}
-
-            if [ -f ${base}.ini ]; then
-                echo "Rendering POV-Ray scene ${base}..."
-                if povray ${base}; then
-                    if [ -f ${base}.png ]; then
-                        echo "Copying result image ${base}.png to s3://${bucket}/${base}.png..."
-                        aws s3 cp ${base}.png s3://${bucket}/${base}.png
-                    else
-                        echo "ERROR: POV-Ray source did not generate ${base}.png image."
-                    fi
-                else
-                    echo "ERROR: POV-Ray source did not render successfully."
-                fi
-            else
-                echo "ERROR: No ${base}.ini file found in POV-Ray source archive."
-            fi
+	    # TODO: file processing
 
             echo "Cleaning up..."
             popd

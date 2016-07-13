@@ -505,10 +505,6 @@ def setup_bucket_notifications():
         )
 
 
-def show_bucket_name():
-    print("Your bucket name is: " + AWS_BUCKET)
-
-
 # Amazon EC2
 
 def get_instance_ip_from_id(instance_id):
@@ -741,24 +737,6 @@ def get_or_create_queue():
 
             tries += 1
 
-
-# Putting together the demo POV-Ray file.
-
-def create_pov_ray_zip():
-    if os.path.exists(POV_RAY_SCENE_FILE):
-        print('Deleting old ZIP file: ' + POV_RAY_SCENE_FILE)
-        os.remove(POV_RAY_SCENE_FILE)
-
-    print('Creating ZIP file: ' + POV_RAY_SCENE_FILE + '...')
-    with ZipFile(POV_RAY_SCENE_FILE, 'w', ZIP_DEFLATED) as z:
-        saved_dir = os.getcwd()
-        os.chdir(POV_RAY_SCENE_NAME)
-        for f in POV_RAY_SCENE_FILES:
-            print('Adding: ' + f + '...')
-            z.write(f)
-        os.chdir(saved_dir)
-        z.close()
-
 # High level functions. Call these as "fab <function>"
 
 
@@ -788,5 +766,4 @@ def setup():
     update_lambda()
     update_ecs()
     update_ecs_role_policy()
-    create_pov_ray_zip()
-    show_bucket_name()
+

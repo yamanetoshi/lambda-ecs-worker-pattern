@@ -1,7 +1,7 @@
 # Constants (User configurable)
 
 FULL_NAME_AND_EMAIL = 'First Last <email@domain.com>'  # For Dockerfile/POV-Ray builds.
-APP_NAME = 'ECSPOVRayWorker'  # Used to generate derivative names unique to the application.
+APP_NAME = 'WorkerPrototype'  # Used to generate derivative names unique to the application.
 
 DOCKERHUB_USER = 'username'
 DOCKERHUB_EMAIL = 'email@domain.com'
